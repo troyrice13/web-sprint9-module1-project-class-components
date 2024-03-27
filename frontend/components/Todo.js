@@ -1,11 +1,23 @@
-import React from 'react'
+import React from 'react';
 
 export default class Todo extends React.Component {
   render() {
+    const { todo, index, toggleTodo } = this.props;
     return (
-      <div>
-        Todo
-      </div>
-    )
+      <li
+        style={{
+          textDecoration: todo.completed ? 'line-through' : 'none',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+        }}
+        onClick={() => toggleTodo(todo.id)}
+      >
+        <span>
+          {index + 1}. {todo.text}
+        </span>
+        {todo.completed && <span>✓</span>}
+      </li>
+    );
   }
 }
